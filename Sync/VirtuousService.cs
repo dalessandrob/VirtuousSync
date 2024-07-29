@@ -30,9 +30,15 @@ namespace Sync
             request.AddQueryParameter("Take", take);
 
             var body = new ContactQueryRequest();
+
+            //Contacts in AZ
+            var filter = new StateFilter("AZ");
+            var option = new RootFilter(filter);
+            body.Groups.Add(option);
+
             request.AddJsonBody(body);
 
-            var response = await _restClient.GetAsync<PagedResult<AbbreviatedContact>>(request);
+            var response = await _restClient.PostAsync<PagedResult<AbbreviatedContact>>(request);
             return response;
         }
     }
