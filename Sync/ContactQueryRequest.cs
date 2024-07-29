@@ -21,4 +21,23 @@ namespace Sync
 
         public bool Descending { get; set; }
     }
+
+    public class Condition
+    {
+        public string Parameter { get; set; }
+        public string Operator { get; set; }
+        public string Value { get; set; }
+        //public string secondaryValue { get; set; }
+        //public List<string> values { get; set; }
+    }
+
+    public class Root
+    {
+        public Root()
+        {
+            Conditions = new List<Condition>();
+        }
+
+        public List<Condition> Conditions { get; set; }
+    }
 }
